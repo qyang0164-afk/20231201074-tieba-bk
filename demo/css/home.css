@@ -1,0 +1,243 @@
+/* 首页专用样式 */
+
+/* 帖子列表区域 */
+.post-list {
+    flex: 1;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background: var(--card-bg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow);
+}
+
+.post-header h2 {
+    color: var(--text-primary);
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.new-post-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.new-post-btn:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+/* 帖子项样式 */
+.post-item {
+    background: var(--card-bg);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.post-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.post-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: var(--spacing-md);
+    object-fit: cover;
+    border: 2px solid var(--border-color);
+}
+
+.post-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-author {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 14px;
+}
+
+.post-time {
+    color: var(--text-light);
+    font-size: 12px;
+}
+
+.post-content {
+    margin-bottom: var(--spacing-md);
+}
+
+.post-title {
+    margin-bottom: var(--spacing-sm);
+}
+
+.post-title a {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: 18px;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.post-title a:hover {
+    color: var(--primary-color);
+}
+
+.post-excerpt {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+    font-size: 14px;
+}
+
+.post-tags {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding: 2px 8px;
+    background: rgba(24, 144, 255, 0.1);
+    color: var(--primary-color);
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.post-stats {
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-light);
+    font-size: 13px;
+}
+
+/* 加载更多按钮 */
+.load-more {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+}
+
+.load-more-btn {
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: var(--card-bg);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.load-more-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* 空状态样式 */
+.empty-state {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--text-light);
+}
+
+.empty-state h3 {
+    margin-bottom: var(--spacing-md);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.empty-state p {
+    margin-bottom: var(--spacing-lg);
+    font-size: 14px;
+}
+
+/* 热门帖子标记 */
+.hot-post {
+    position: relative;
+}
+
+.hot-post::before {
+    content: "🔥";
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--warning-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* 置顶帖子样式 */
+.sticky-post {
+    border-left: 4px solid var(--primary-color);
+    background: rgba(24, 144, 255, 0.05);
+}
+
+.sticky-post .post-title a {
+    color: var(--primary-color);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .post-header {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        text-align: center;
+    }
+    
+    .post-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+    
+    .post-avatar {
+        margin-right: 0;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .post-stats {
+        justify-content: space-between;
+    }
+    
+    .post-title a {
+        font-size: 16px;
+    }
+    
+    .post-excerpt {
+        font-size: 13px;
+    }
+}

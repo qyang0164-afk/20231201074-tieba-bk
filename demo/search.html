@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索 - 校园贴吧</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/search.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">校园贴吧</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="#" class="nav-link">热门</a>
+                <a href="#" class="nav-link">板块</a>
+                <a href="search.html" class="nav-link active">搜索</a>
+                <a href="login.html" class="nav-link">登录</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 搜索容器 -->
+    <div class="search-container">
+        <div class="search-header">
+            <h1>搜索校园贴吧</h1>
+            <p>发现有趣的内容和志同道合的朋友</p>
+        </div>
+
+        <!-- 搜索框 -->
+        <div class="search-box">
+            <div class="search-input-wrapper">
+                <input type="text" id="searchInput" placeholder="搜索帖子、用户、话题..." autocomplete="off">
+                <button class="search-btn" id="searchBtn">
+                    <span class="search-icon">🔍</span>
+                    搜索
+                </button>
+            </div>
+            
+            <!-- 搜索建议 -->
+            <div class="search-suggestions" id="searchSuggestions">
+                <div class="suggestions-header">
+                    <h3>热门搜索</h3>
+                </div>
+                <div class="suggestions-list">
+                    <a href="#" class="suggestion-item" data-query="高数复习">高数复习</a>
+                    <a href="#" class="suggestion-item" data-query="校园美食">校园美食</a>
+                    <a href="#" class="suggestion-item" data-query="社团招新">社团招新</a>
+                    <a href="#" class="suggestion-item" data-query="期末考试">期末考试</a>
+                    <a href="#" class="suggestion-item" data-query="租房信息">租房信息</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 搜索筛选器 -->
+        <div class="search-filters" id="searchFilters">
+            <div class="filter-group">
+                <label>搜索类型：</label>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="radio" name="searchType" value="all" checked>
+                        <span class="filter-label">全部</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="radio" name="searchType" value="posts">
+                        <span class="filter-label">帖子</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="radio" name="searchType" value="users">
+                        <span class="filter-label">用户</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="radio" name="searchType" value="tags">
+                        <span class="filter-label">标签</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <label>排序方式：</label>
+                <select id="sortBy">
+                    <option value="relevance">相关度</option>
+                    <option value="time">时间</option>
+                    <option value="popularity">热度</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label>时间范围：</label>
+                <select id="timeRange">
+                    <option value="all">全部时间</option>
+                    <option value="day">今天</option>
+                    <option value="week">本周</option>
+                    <option value="month">本月</option>
+                    <option value="year">今年</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- 搜索结果 -->
+        <div class="search-results" id="searchResults">
+            <!-- 初始状态 -->
+            <div class="search-initial" id="searchInitial">
+                <div class="initial-content">
+                    <div class="initial-icon">🔍</div>
+                    <h3>开始搜索</h3>
+                    <p>输入关键词搜索帖子、用户或话题</p>
+                    
+                    <div class="trending-topics">
+                        <h4>热门话题</h4>
+                        <div class="topics-list">
+                            <a href="#" class="topic-tag" data-query="#高数期末">#高数期末</a>
+                            <a href="#" class="topic-tag" data-query="#校园美食">#校园美食</a>
+                            <a href="#" class="topic-tag" data-query="#社团活动">#社团活动</a>
+                            <a href="#" class="topic-tag" data-query="#学习资料">#学习资料</a>
+                            <a href="#" class="topic-tag" data-query="#校园招聘">#校园招聘</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 搜索结果列表 -->
+            <div class="results-list" id="resultsList" style="display: none;">
+                <div class="results-header">
+                    <h3 id="resultsTitle">搜索结果</h3>
+                    <span class="results-count" id="resultsCount">0 个结果</span>
+                </div>
+                
+                <!-- 帖子结果 -->
+                <div class="results-section" id="postsResults">
+                    <h4>相关帖子</h4>
+                    <div class="posts-list" id="postsList">
+                        <!-- 帖子结果将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+                
+                <!-- 用户结果 -->
+                <div class="results-section" id="usersResults">
+                    <h4>相关用户</h4>
+                    <div class="users-list" id="usersList">
+                        <!-- 用户结果将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+                
+                <!-- 标签结果 -->
+                <div class="results-section" id="tagsResults">
+                    <h4>相关标签</h4>
+                    <div class="tags-list" id="tagsList">
+                        <!-- 标签结果将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+                
+                <!-- 加载更多 -->
+                <div class="load-more" id="loadMore" style="display: none;">
+                    <button class="btn btn-secondary btn-full" id="loadMoreBtn">加载更多</button>
+                </div>
+                
+                <!-- 无结果 -->
+                <div class="no-results" id="noResults" style="display: none;">
+                    <div class="no-results-icon">😕</div>
+                    <h3>没有找到相关结果</h3>
+                    <p>尝试使用不同的关键词或调整搜索条件</p>
+                    <button class="btn btn-primary" onclick="clearSearch()">重新搜索</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 搜索历史 -->
+        <div class="search-history" id="searchHistory">
+            <div class="history-header">
+                <h3>搜索历史</h3>
+                <button class="clear-history" id="clearHistory">清除历史</button>
+            </div>
+            <div class="history-list" id="historyList">
+                <!-- 搜索历史将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>校园贴吧</h3>
+                    <p>连接校园，分享生活</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <a href="index.html">首页</a>
+                    <a href="#">热门帖子</a>
+                    <a href="#">校园公告</a>
+                </div>
+                <div class="footer-section">
+                    <h4>帮助中心</h4>
+                    <a href="#">使用指南</a>
+                    <a href="#">常见问题</a>
+                    <a href="#">联系我们</a>
+                </div>
+                <div class="footer-section">
+                    <h4>关于我们</h4>
+                    <a href="#">关于贴吧</a>
+                    <a href="#">服务条款</a>
+                    <a href="#">隐私政策</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 校园贴吧. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/search.js"></script>
+</body>
+</html>

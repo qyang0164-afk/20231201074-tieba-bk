@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - 校园贴吧</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">校园贴吧</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="#" class="nav-link">热门</a>
+                <a href="#" class="nav-link">板块</a>
+                <a href="login.html" class="nav-link active">登录</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 登录注册容器 -->
+    <div class="auth-container">
+        <div class="auth-wrapper">
+            <!-- 登录表单 -->
+            <div class="auth-form login-form active" id="loginForm">
+                <div class="auth-header">
+                    <h1>欢迎回来</h1>
+                    <p>登录您的校园贴吧账号</p>
+                </div>
+                
+                <form id="loginFormElement">
+                    <div class="form-group">
+                        <label for="loginUsername">用户名或邮箱</label>
+                        <input type="text" id="loginUsername" name="username" required>
+                        <div class="error-message" id="usernameError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loginPassword">密码</label>
+                        <div class="password-input">
+                            <input type="password" id="loginPassword" name="password" required>
+                            <button type="button" class="toggle-password" onclick="togglePassword('loginPassword')">👁️</button>
+                        </div>
+                        <div class="error-message" id="passwordError"></div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            记住我
+                        </label>
+                        <a href="#" class="forgot-password">忘记密码？</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-large btn-full">登录</button>
+                </form>
+                
+                <div class="auth-divider">
+                    <span>或</span>
+                </div>
+                
+                <div class="social-login">
+                    <button class="btn btn-social btn-qq">
+                        <span class="social-icon">🐧</span>
+                        QQ登录
+                    </button>
+                    <button class="btn btn-social btn-wechat">
+                        <span class="social-icon">💬</span>
+                        微信登录
+                    </button>
+                </div>
+                
+                <div class="auth-switch">
+                    <p>还没有账号？ <a href="#" onclick="switchToRegister()">立即注册</a></p>
+                </div>
+            </div>
+
+            <!-- 注册表单 -->
+            <div class="auth-form register-form" id="registerForm">
+                <div class="auth-header">
+                    <h1>加入校园贴吧</h1>
+                    <p>创建您的专属账号</p>
+                </div>
+                
+                <form id="registerFormElement">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="registerUsername">用户名</label>
+                            <input type="text" id="registerUsername" name="username" required>
+                            <div class="error-message" id="registerUsernameError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerEmail">邮箱</label>
+                            <input type="email" id="registerEmail" name="email" required>
+                            <div class="error-message" id="registerEmailError"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="registerPassword">密码</label>
+                            <div class="password-input">
+                                <input type="password" id="registerPassword" name="password" required>
+                                <button type="button" class="toggle-password" onclick="togglePassword('registerPassword')">👁️</button>
+                            </div>
+                            <div class="error-message" id="registerPasswordError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">确认密码</label>
+                            <div class="password-input">
+                                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                                <button type="button" class="toggle-password" onclick="togglePassword('confirmPassword')">👁️</button>
+                            </div>
+                            <div class="error-message" id="confirmPasswordError"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studentId">学号（可选）</label>
+                        <input type="text" id="studentId" name="studentId" placeholder="用于身份验证">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="realName">真实姓名（可选）</label>
+                        <input type="text" id="realName" name="realName" placeholder="用于实名认证">
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span class="checkmark"></span>
+                            我已阅读并同意 <a href="#" class="link">服务条款</a> 和 <a href="#" class="link">隐私政策</a>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-large btn-full">注册账号</button>
+                </form>
+                
+                <div class="auth-divider">
+                    <span>或</span>
+                </div>
+                
+                <div class="social-login">
+                    <button class="btn btn-social btn-qq">
+                        <span class="social-icon">🐧</span>
+                        QQ注册
+                    </button>
+                    <button class="btn btn-social btn-wechat">
+                        <span class="social-icon">💬</span>
+                        微信注册
+                    </button>
+                </div>
+                
+                <div class="auth-switch">
+                    <p>已有账号？ <a href="#" onclick="switchToLogin()">立即登录</a></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 欢迎信息 -->
+        <div class="welcome-panel">
+            <div class="welcome-content">
+                <h2>加入校园贴吧社区</h2>
+                <p>与同学们分享知识、交流经验、结识朋友</p>
+                
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">📚</div>
+                        <div class="feature-text">
+                            <h3>学习交流</h3>
+                            <p>分享学习资料，讨论学术问题</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">🎉</div>
+                        <div class="feature-text">
+                            <h3>校园活动</h3>
+                            <p>了解最新校园动态和活动信息</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">🤝</div>
+                        <div class="feature-text">
+                            <h3>社交互动</h3>
+                            <p>结识志同道合的同学和朋友</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>校园贴吧</h3>
+                    <p>连接校园，分享生活</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <a href="index.html">首页</a>
+                    <a href="#">热门帖子</a>
+                    <a href="#">校园公告</a>
+                </div>
+                <div class="footer-section">
+                    <h4>帮助中心</h4>
+                    <a href="#">使用指南</a>
+                    <a href="#">常见问题</a>
+                    <a href="#">联系我们</a>
+                </div>
+                <div class="footer-section">
+                    <h4>关于我们</h4>
+                    <a href="#">关于贴吧</a>
+                    <a href="#">服务条款</a>
+                    <a href="#">隐私政策</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 校园贴吧. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/login.js"></script>
+</body>
+</html>

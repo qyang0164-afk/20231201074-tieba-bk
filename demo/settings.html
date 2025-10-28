@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设置 - 校园贴吧</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/settings.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="nav-logo">
+                    <span class="logo-icon">🏫</span>
+                    <span class="logo-text">校园贴吧</span>
+                </a>
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-link">首页</a>
+                    <a href="search.html" class="nav-link">搜索</a>
+                    <a href="create-post.html" class="nav-link">发帖</a>
+                </div>
+            </div>
+            <div class="nav-right">
+                <div class="nav-search">
+                    <input type="text" placeholder="搜索帖子、用户..." class="search-input">
+                    <button class="search-btn">🔍</button>
+                </div>
+                <div class="nav-user">
+                    <a href="profile.html" class="user-avatar">👤</a>
+                    <a href="messages.html" class="nav-icon">💬</a>
+                    <a href="settings.html" class="nav-icon active">⚙️</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 设置页面主容器 -->
+    <div class="settings-container">
+        <div class="settings-header">
+            <h1>设置</h1>
+            <p class="settings-subtitle">管理您的账户和偏好设置</p>
+        </div>
+
+        <div class="settings-content">
+            <!-- 设置侧边栏 -->
+            <div class="settings-sidebar">
+                <div class="sidebar-menu">
+                    <div class="menu-item active" data-tab="account">
+                        <span class="menu-icon">👤</span>
+                        <span class="menu-text">账户设置</span>
+                    </div>
+                    <div class="menu-item" data-tab="privacy">
+                        <span class="menu-icon">🔒</span>
+                        <span class="menu-text">隐私设置</span>
+                    </div>
+                    <div class="menu-item" data-tab="notifications">
+                        <span class="menu-icon">🔔</span>
+                        <span class="menu-text">通知设置</span>
+                    </div>
+                    <div class="menu-item" data-tab="appearance">
+                        <span class="menu-icon">🎨</span>
+                        <span class="menu-text">外观设置</span>
+                    </div>
+                    <div class="menu-item" data-tab="security">
+                        <span class="menu-icon">🔐</span>
+                        <span class="menu-text">安全设置</span>
+                    </div>
+                    <div class="menu-item" data-tab="about">
+                        <span class="menu-icon">ℹ️</span>
+                        <span class="menu-text">关于我们</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 设置内容区域 -->
+            <div class="settings-main">
+                <!-- 账户设置 -->
+                <div class="settings-tab active" id="account">
+                    <div class="tab-header">
+                        <h2>账户设置</h2>
+                        <p>管理您的个人信息和账户偏好</p>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>个人信息</h3>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label for="avatar">头像</label>
+                                <div class="avatar-upload">
+                                    <div class="avatar-preview">
+                                        <div class="avatar-image">👤</div>
+                                    </div>
+                                    <div class="avatar-actions">
+                                        <button type="button" class="btn btn-outline" id="changeAvatar">更换头像</button>
+                                        <button type="button" class="btn btn-text" id="removeAvatar">移除头像</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="username">用户名</label>
+                                <input type="text" id="username" value="校园小助手" class="form-input">
+                                <p class="form-help">用户名将显示在您的帖子和评论中</p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">邮箱地址</label>
+                                <input type="email" id="email" value="user@campus.com" class="form-input">
+                                <p class="form-help">用于接收重要通知和重置密码</p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="bio">个人简介</label>
+                                <textarea id="bio" class="form-textarea" placeholder="介绍一下自己...">热爱学习，乐于分享校园生活经验</textarea>
+                                <p class="form-help">最多200个字符</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>偏好设置</h3>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label for="language">语言</label>
+                                <select id="language" class="form-select">
+                                    <option value="zh-CN">简体中文</option>
+                                    <option value="en-US">English</option>
+                                    <option value="ja-JP">日本語</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="timezone">时区</label>
+                                <select id="timezone" class="form-select">
+                                    <option value="Asia/Shanghai">北京时间 (UTC+8)</option>
+                                    <option value="America/New_York">纽约时间 (UTC-5)</option>
+                                    <option value="Europe/London">伦敦时间 (UTC+0)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="emailNotifications" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">接收邮件通知</span>
+                                </label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="newsletter" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">订阅校园资讯</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-actions">
+                        <button class="btn btn-primary" id="saveAccount">保存更改</button>
+                        <button class="btn btn-outline" id="resetAccount">重置</button>
+                    </div>
+                </div>
+
+                <!-- 隐私设置 -->
+                <div class="settings-tab" id="privacy">
+                    <div class="tab-header">
+                        <h2>隐私设置</h2>
+                        <p>控制谁可以看到您的信息和活动</p>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>个人资料可见性</h3>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label for="profileVisibility">个人资料可见性</label>
+                                <select id="profileVisibility" class="form-select">
+                                    <option value="public">公开（所有人可见）</option>
+                                    <option value="loggedin">仅登录用户可见</option>
+                                    <option value="friends">仅好友可见</option>
+                                    <option value="private">仅自己可见</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="postVisibility">帖子默认可见性</label>
+                                <select id="postVisibility" class="form-select">
+                                    <option value="public">公开</option>
+                                    <option value="campus">仅校园用户可见</option>
+                                    <option value="friends">仅好友可见</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>互动权限</h3>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="allowMessages" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">允许他人给我发送私信</span>
+                                </label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="allowFollow" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">允许他人关注我</span>
+                                </label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="showOnlineStatus" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">显示在线状态</span>
+                                </label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="showActivity" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">显示最近活动</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>数据管理</h3>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <p>您可以下载或删除您的个人数据</p>
+                                <div class="data-actions">
+                                    <button class="btn btn-outline" id="downloadData">下载数据</button>
+                                    <button class="btn btn-danger" id="deleteData">删除账户</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-actions">
+                        <button class="btn btn-primary" id="savePrivacy">保存更改</button>
+                    </div>
+                </div>
+
+                <!-- 通知设置 -->
+                <div class="settings-tab" id="notifications">
+                    <div class="tab-header">
+                        <h2>通知设置</h2>
+                        <p>管理您接收通知的方式和类型</p>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>推送通知</h3>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="pushEnabled" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">启用推送通知</span>
+                                </label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="pushReplies" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">帖子回复通知</span>
+                                </label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="pushLikes" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">点赞通知</span>
+                                </label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="pushFollows" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">关注通知</span>
+                                </label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="pushSystem" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">系统通知</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>邮件通知</h3>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="emailReplies" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">重要回复邮件通知</span>
+                                </label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="emailDigest" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">每周摘要邮件</span>
+                                </label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="emailNews" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">校园新闻邮件</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>免打扰</h3>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="dndEnabled">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">启用免打扰模式</span>
+                                </label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="dndStart">开始时间</label>
+                                <input type="time" id="dndStart" value="22:00" class="form-input">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="dndEnd">结束时间</label>
+                                <input type="time" id="dndEnd" value="07:00" class="form-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-actions">
+                        <button class="btn btn-primary" id="saveNotifications">保存更改</button>
+                    </div>
+                </div>
+
+                <!-- 外观设置 -->
+                <div class="settings-tab" id="appearance">
+                    <div class="tab-header">
+                        <h2>外观设置</h2>
+                        <p>自定义界面外观和显示效果</p>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>主题设置</h3>
+                        <div class="theme-options">
+                            <div class="theme-option active" data-theme="light">
+                                <div class="theme-preview light-theme"></div>
+                                <span class="theme-name">浅色主题</span>
+                            </div>
+                            <div class="theme-option" data-theme="dark">
+                                <div class="theme-preview dark-theme"></div>
+                                <span class="theme-name">深色主题</span>
+                            </div>
+                            <div class="theme-option" data-theme="auto">
+                                <div class="theme-preview auto-theme"></div>
+                                <span class="theme-name">自动切换</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>字体设置</h3>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label for="fontSize">字体大小</label>
+                                <select id="fontSize" class="form-select">
+                                    <option value="small">小</option>
+                                    <option value="medium" selected>中</option>
+                                    <option value="large">大</option>
+                                    <option value="xlarge">特大</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="fontFamily">字体家族</label>
+                                <select id="fontFamily" class="form-select">
+                                    <option value="system">系统默认</option>
+                                    <option value="sans-serif">无衬线体</option>
+                                    <option value="serif">衬线体</option>
+                                    <option value="monospace">等宽字体</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>布局设置</h3>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="compactMode">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">紧凑模式</span>
+                                </label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="sidebarCollapsed" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">自动收起侧边栏</span>
+                                </label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="animationsEnabled" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">启用动画效果</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-actions">
+                        <button class="btn btn-primary" id="saveAppearance">保存更改</button>
+                    </div>
+                </div>
+
+                <!-- 安全设置 -->
+                <div class="settings-tab" id="security">
+                    <div class="tab-header">
+                        <h2>安全设置</h2>
+                        <p>保护您的账户安全</p>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>密码安全</h3>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label for="currentPassword">当前密码</label>
+                                <input type="password" id="currentPassword" class="form-input" placeholder="输入当前密码">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="newPassword">新密码</label>
+                                <input type="password" id="newPassword" class="form-input" placeholder="输入新密码">
+                                <div class="password-strength">
+                                    <div class="strength-bar">
+                                        <div class="strength-fill" data-strength="0"></div>
+                                    </div>
+                                    <span class="strength-text">密码强度：弱</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="confirmPassword">确认新密码</label>
+                                <input type="password" id="confirmPassword" class="form-input" placeholder="再次输入新密码">
+                            </div>
+                            
+                            <button class="btn btn-primary" id="changePassword">更改密码</button>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>登录安全</h3>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="twoFactorAuth">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">启用双重认证</span>
+                                </label>
+                                <p class="form-help">为您的账户增加一层安全保护</p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="loginAlerts" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">登录提醒</span>
+                                </label>
+                                <p class="form-help">在新设备登录时发送通知</p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="rememberMe" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-text">记住登录状态</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>登录设备</h3>
+                        <div class="login-sessions">
+                            <div class="session-item">
+                                <div class="session-info">
+                                    <div class="session-device">
+                                        <span class="device-icon">💻</span>
+                                        <div class="device-details">
+                                            <strong>Windows Chrome</strong>
+                                            <span>北京 · 当前设备</span>
+                                        </div>
+                                    </div>
+                                    <div class="session-time">刚刚</div>
+                                </div>
+                                <button class="btn btn-text">退出</button>
+                            </div>
+                            
+                            <div class="session-item">
+                                <div class="session-info">
+                                    <div class="session-device">
+                                        <span class="device-icon">📱</span>
+                                        <div class="device-details">
+                                            <strong>iPhone Safari</strong>
+                                            <span>上海 · 2天前</span>
+                                        </div>
+                                    </div>
+                                    <div class="session-time">2天前</div>
+                                </div>
+                                <button class="btn btn-text">退出</button>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-outline" id="logoutAll">退出所有设备</button>
+                    </div>
+                </div>
+
+                <!-- 关于我们 -->
+                <div class="settings-tab" id="about">
+                    <div class="tab-header">
+                        <h2>关于我们</h2>
+                        <p>了解校园贴吧的更多信息</p>
+                    </div>
+
+                    <div class="about-content">
+                        <div class="app-info">
+                            <div class="app-logo">🏫</div>
+                            <h3>校园贴吧</h3>
+                            <p class="app-version">版本 2.1.0</p>
+                        </div>
+
+                        <div class="about-section">
+                            <h4>应用介绍</h4>
+                            <p>校园贴吧是一个专为大学生设计的校园社交平台，提供学习交流、生活分享、社团活动等多种功能，帮助同学们更好地融入校园生活。</p>
+                        </div>
+
+                        <div class="about-section">
+                            <h4>功能特性</h4>
+                            <ul class="feature-list">
+                                <li>📚 学习资料分享与交流</li>
+                                <li>🍔 校园美食推荐与点评</li>
+                                <li>🎉 社团活动发布与参与</li>
+                                <li>💬 实时聊天与私信功能</li>
+                                <li>🔍 智能搜索与推荐</li>
+                                <li>⚙️ 个性化设置与主题</li>
+                            </ul>
+                        </div>
+
+                        <div class="about-section">
+                            <h4>联系我们</h4>
+                            <div class="contact-info">
+                                <p>📧 邮箱：support@campus-tieba.com</p>
+                                <p>🌐 官网：www.campus-tieba.com</p>
+                                <p>📱 客服热线：400-123-4567</p>
+                            </div>
+                        </div>
+
+                        <div class="about-section">
+                            <h4>开源许可</h4>
+                            <p>校园贴吧基于 MIT 开源协议发布，欢迎开发者参与贡献。</p>
+                            <button class="btn btn-outline" id="viewLicense">查看许可协议</button>
+                        </div>
+
+                        <div class="about-actions">
+                            <button class="btn btn-primary" id="checkUpdate">检查更新</button>
+                            <button class="btn btn-outline" id="rateApp">评价应用</button>
+                            <button class="btn btn-text" id="shareApp">分享应用</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/settings.js"></script>
+</body>
+</html>

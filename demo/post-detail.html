@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园贴吧 - 帖子详情</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/post-detail.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1>校园贴吧</h1>
+            </div>
+            <div class="nav-search">
+                <input type="text" placeholder="搜索帖子、用户..." class="search-input">
+                <button class="search-btn">搜索</button>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="post-detail.html" class="nav-link active">帖子</a>
+                <a href="create-post.html" class="nav-link">发帖</a>
+                <a href="profile.html" class="nav-link">我的</a>
+                <a href="login.html" class="nav-link">登录</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+        <div class="container">
+            <!-- 帖子详情 -->
+            <article class="post-detail">
+                <!-- 帖子头部 -->
+                <header class="post-header">
+                    <div class="post-meta">
+                        <img src="images/avatar1.jpg" alt="用户头像" class="post-avatar">
+                        <div class="post-info">
+                            <span class="post-author">张三</span>
+                            <span class="post-time">发布于 2小时前</span>
+                            <span class="post-views">👁️ 156次浏览</span>
+                        </div>
+                    </div>
+                    <div class="post-actions">
+                        <button class="btn btn-secondary" onclick="followAuthor()">
+                            <span class="icon">👤</span> 关注
+                        </button>
+                        <button class="btn btn-secondary" onclick="sharePost()">
+                            <span class="icon">📤</span> 分享
+                        </button>
+                    </div>
+                </header>
+
+                <!-- 帖子内容 -->
+                <div class="post-content">
+                    <h1 class="post-title">校园文化艺术节即将开幕，欢迎大家踊跃参与！</h1>
+                    
+                    <div class="post-tags">
+                        <span class="tag">校园新闻</span>
+                        <span class="tag">活动</span>
+                        <span class="tag">官方通知</span>
+                    </div>
+
+                    <div class="post-body">
+                        <p>亲爱的同学们：</p>
+                        
+                        <p>一年一度的校园文化艺术节即将在下周五（12月15日）盛大开幕！本次艺术节将为大家带来丰富多彩的文化活动，包括：</p>
+                        
+                        <ul>
+                            <li><strong>音乐表演</strong>：校园乐队专场演出、合唱比赛</li>
+                            <li><strong>舞蹈展示</strong>：民族舞、现代舞、街舞表演</li>
+                            <li><strong>戏剧演出</strong>：话剧社原创剧目《青春之歌》</li>
+                            <li><strong>美术展览</strong>：学生艺术作品展</li>
+                            <li><strong>互动体验</strong>：传统文化体验区、手工艺制作</li>
+                        </ul>
+                        
+                        <p><strong>活动时间</strong>：12月15日 下午2:00-6:00</p>
+                        <p><strong>活动地点</strong>：学校大礼堂及周边广场</p>
+                        
+                        <p>欢迎大家踊跃参与，共同营造浓厚的校园文化氛围！</p>
+                        
+                        <p>艺术节组委会<br>2024年12月10日</p>
+                    </div>
+
+                    <!-- 帖子图片 -->
+                    <div class="post-images">
+                        <img src="images/art-festival.jpg" alt="艺术节宣传图" class="post-image">
+                        <img src="images/performance.jpg" alt="往期表演照片" class="post-image">
+                    </div>
+
+                    <!-- 帖子统计 -->
+                    <div class="post-stats">
+                        <button class="stat-btn like-btn" onclick="toggleLike()">
+                            <span class="icon">👍</span>
+                            <span class="count">45</span>
+                        </button>
+                        <button class="stat-btn comment-btn" onclick="scrollToComments()">
+                            <span class="icon">💬</span>
+                            <span class="count">23</span>
+                        </button>
+                        <button class="stat-btn favorite-btn" onclick="toggleFavorite()">
+                            <span class="icon">⭐</span>
+                            <span class="count">12</span>
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 评论区 -->
+            <section class="comments-section">
+                <div class="comments-header">
+                    <h2>评论 (23)</h2>
+                    <button class="btn btn-primary" onclick="showCommentForm()">写评论</button>
+                </div>
+
+                <!-- 评论表单 -->
+                <div class="comment-form" id="commentForm" style="display: none;">
+                    <div class="form-group">
+                        <textarea 
+                            class="form-textarea" 
+                            placeholder="写下你的评论..."
+                            rows="3"
+                        ></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn btn-secondary" onclick="hideCommentForm()">取消</button>
+                        <button class="btn btn-primary" onclick="submitComment()">发布评论</button>
+                    </div>
+                </div>
+
+                <!-- 评论列表 -->
+                <div class="comments-list">
+                    <!-- 评论项 -->
+                    <div class="comment-item">
+                        <div class="comment-meta">
+                            <img src="images/avatar2.jpg" alt="用户头像" class="comment-avatar">
+                            <div class="comment-info">
+                                <span class="comment-author">李四</span>
+                                <span class="comment-time">1小时前</span>
+                            </div>
+                        </div>
+                        <div class="comment-content">
+                            <p>太期待了！去年艺术节就特别精彩，今年一定要参加！</p>
+                        </div>
+                        <div class="comment-actions">
+                            <button class="action-btn" onclick="likeComment(this)">
+                                <span class="icon">👍</span> 8
+                            </button>
+                            <button class="action-btn" onclick="replyComment(this)">
+                                <span class="icon">↩️</span> 回复
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="comment-item">
+                        <div class="comment-meta">
+                            <img src="images/avatar3.jpg" alt="用户头像" class="comment-avatar">
+                            <div class="comment-info">
+                                <span class="comment-author">王五</span>
+                                <span class="comment-time">45分钟前</span>
+                            </div>
+                        </div>
+                        <div class="comment-content">
+                            <p>请问需要提前报名吗？还是直接去参加就可以？</p>
+                        </div>
+                        <div class="comment-actions">
+                            <button class="action-btn" onclick="likeComment(this)">
+                                <span class="icon">👍</span> 5
+                            </button>
+                            <button class="action-btn" onclick="replyComment(this)">
+                                <span class="icon">↩️</span> 回复
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="comment-item">
+                        <div class="comment-meta">
+                            <img src="images/avatar4.jpg" alt="用户头像" class="comment-avatar">
+                            <div class="comment-info">
+                                <span class="comment-author">赵六</span>
+                                <span class="comment-time">30分钟前</span>
+                            </div>
+                        </div>
+                        <div class="comment-content">
+                            <p>我们乐队会参加演出，欢迎大家来支持！🎸</p>
+                        </div>
+                        <div class="comment-actions">
+                            <button class="action-btn" onclick="likeComment(this)">
+                                <span class="icon">👍</span> 15
+                            </button>
+                            <button class="action-btn" onclick="replyComment(this)">
+                                <span class="icon">↩️</span> 回复
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 加载更多评论 -->
+                <div class="load-more">
+                    <button class="load-more-btn" onclick="loadMoreComments()">
+                        加载更多评论
+                    </button>
+                </div>
+            </section>
+
+            <!-- 相关帖子 -->
+            <aside class="related-posts">
+                <h3>相关帖子</h3>
+                <div class="related-list">
+                    <a href="#" class="related-item">
+                        <h4>校园歌手大赛报名开始</h4>
+                        <p>一年一度的校园歌手大赛即将开始，欢迎有才华的同学报名参加...</p>
+                    </a>
+                    <a href="#" class="related-item">
+                        <h4>图书馆延长开放时间通知</h4>
+                        <p>为方便同学们复习备考，图书馆将延长开放至晚上10点...</p>
+                    </a>
+                    <a href="#" class="related-item">
+                        <h4>新学期社团招新活动</h4>
+                        <p>各大学生社团将在下周进行招新，欢迎新同学加入...</p>
+                    </a>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 校园贴吧系统. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/post-detail.js"></script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园贴吧 - 个人中心</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1>校园贴吧</h1>
+            </div>
+            <div class="nav-search">
+                <input type="text" placeholder="搜索帖子、用户..." class="search-input">
+                <button class="search-btn">搜索</button>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="post-detail.html" class="nav-link">帖子</a>
+                <a href="create-post.html" class="nav-link">发帖</a>
+                <a href="profile.html" class="nav-link active">我的</a>
+                <a href="login.html" class="nav-link">登录</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+        <div class="container">
+            <div class="profile-container">
+                <!-- 用户信息头部 -->
+                <div class="profile-header">
+                    <div class="user-avatar-section">
+                        <div class="avatar-container">
+                            <img src="https://via.placeholder.com/120x120" alt="用户头像" class="user-avatar">
+                            <button class="avatar-edit-btn" onclick="editAvatar()">📷 更换头像</button>
+                        </div>
+                    </div>
+                    <div class="user-info-section">
+                        <div class="user-basic-info">
+                            <h1 class="username">校园小助手</h1>
+                            <div class="user-badges">
+                                <span class="badge badge-primary">VIP会员</span>
+                                <span class="badge badge-success">认证用户</span>
+                                <span class="badge badge-warning">活跃用户</span>
+                            </div>
+                            <p class="user-bio">热爱分享校园生活，帮助同学解决问题</p>
+                        </div>
+                        <div class="user-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">156</span>
+                                <span class="stat-label">发帖数</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">892</span>
+                                <span class="stat-label">评论数</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">2.3k</span>
+                                <span class="stat-label">获赞数</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">128</span>
+                                <span class="stat-label">粉丝数</span>
+                            </div>
+                        </div>
+                        <div class="user-actions">
+                            <button class="btn btn-primary" onclick="editProfile()">✏️ 编辑资料</button>
+                            <button class="btn btn-secondary" onclick="openSettings()">⚙️ 设置</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 个人中心导航 -->
+                <div class="profile-nav">
+                    <button class="nav-tab active" data-tab="my-posts">我的帖子</button>
+                    <button class="nav-tab" data-tab="my-comments">我的评论</button>
+                    <button class="nav-tab" data-tab="favorites">我的收藏</button>
+                    <button class="nav-tab" data-tab="drafts">草稿箱</button>
+                    <button class="nav-tab" data-tab="followers">粉丝关注</button>
+                </div>
+
+                <!-- 内容区域 -->
+                <div class="profile-content">
+                    <!-- 我的帖子 -->
+                    <div class="tab-content active" id="my-posts">
+                        <div class="content-header">
+                            <h2>我的帖子</h2>
+                            <div class="filter-options">
+                                <select class="filter-select" id="postFilter">
+                                    <option value="all">全部帖子</option>
+                                    <option value="recent">最近发布</option>
+                                    <option value="popular">热门帖子</option>
+                                    <option value="draft">草稿</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="posts-list">
+                            <!-- 帖子项1 -->
+                            <div class="post-item">
+                                <div class="post-header">
+                                    <h3 class="post-title">校园美食推荐：食堂最好吃的窗口</h3>
+                                    <div class="post-meta">
+                                        <span class="post-time">2小时前</span>
+                                        <span class="post-category">生活服务</span>
+                                    </div>
+                                </div>
+                                <div class="post-preview">
+                                    整理了学校各个食堂的特色美食，包括价格、口味评价和推荐指数...
+                                </div>
+                                <div class="post-stats">
+                                    <span class="stat">👍 128</span>
+                                    <span class="stat">💬 56</span>
+                                    <span class="stat">👁️ 2.3k</span>
+                                </div>
+                                <div class="post-actions">
+                                    <button class="btn btn-sm btn-secondary" onclick="editPost(1)">编辑</button>
+                                    <button class="btn btn-sm btn-danger" onclick="deletePost(1)">删除</button>
+                                </div>
+                            </div>
+
+                            <!-- 帖子项2 -->
+                            <div class="post-item">
+                                <div class="post-header">
+                                    <h3 class="post-title">高数期末复习资料分享</h3>
+                                    <div class="post-meta">
+                                        <span class="post-time">1天前</span>
+                                        <span class="post-category">学习交流</span>
+                                    </div>
+                                </div>
+                                <div class="post-preview">
+                                    整理了近三年的高数期末试题和复习重点，希望对大家有帮助...
+                                </div>
+                                <div class="post-stats">
+                                    <span class="stat">👍 89</span>
+                                    <span class="stat">💬 34</span>
+                                    <span class="stat">👁️ 1.8k</span>
+                                </div>
+                                <div class="post-actions">
+                                    <button class="btn btn-sm btn-secondary" onclick="editPost(2)">编辑</button>
+                                    <button class="btn btn-sm btn-danger" onclick="deletePost(2)">删除</button>
+                                </div>
+                            </div>
+
+                            <!-- 帖子项3 -->
+                            <div class="post-item">
+                                <div class="post-header">
+                                    <h3 class="post-title">校园社团招新活动预告</h3>
+                                    <div class="post-meta">
+                                        <span class="post-time">3天前</span>
+                                        <span class="post-category">社团活动</span>
+                                    </div>
+                                </div>
+                                <div class="post-preview">
+                                    下周将举行校园社团联合招新活动，各社团介绍和报名方式...
+                                </div>
+                                <div class="post-stats">
+                                    <span class="stat">👍 67</span>
+                                    <span class="stat">💬 23</span>
+                                    <span class="stat">👁️ 1.2k</span>
+                                </div>
+                                <div class="post-actions">
+                                    <button class="btn btn-sm btn-secondary" onclick="editPost(3)">编辑</button>
+                                    <button class="btn btn-sm btn-danger" onclick="deletePost(3)">删除</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="load-more">
+                            <button class="btn btn-secondary" onclick="loadMorePosts()">加载更多</button>
+                        </div>
+                    </div>
+
+                    <!-- 我的评论 -->
+                    <div class="tab-content" id="my-comments">
+                        <div class="content-header">
+                            <h2>我的评论</h2>
+                        </div>
+                        <div class="comments-list">
+                            <!-- 评论项1 -->
+                            <div class="comment-item">
+                                <div class="comment-header">
+                                    <span class="comment-post">校园美食推荐：食堂最好吃的窗口</span>
+                                    <span class="comment-time">1小时前</span>
+                                </div>
+                                <div class="comment-content">
+                                    感谢分享！三食堂的麻辣香锅确实不错，价格也实惠。
+                                </div>
+                                <div class="comment-actions">
+                                    <button class="btn btn-sm btn-secondary" onclick="viewPost(1)">查看帖子</button>
+                                    <button class="btn btn-sm btn-danger" onclick="deleteComment(1)">删除</button>
+                                </div>
+                            </div>
+
+                            <!-- 评论项2 -->
+                            <div class="comment-item">
+                                <div class="comment-header">
+                                    <span class="comment-post">高数期末复习资料分享</span>
+                                    <span class="comment-time">5小时前</span>
+                                </div>
+                                <div class="comment-content">
+                                    资料很全面，请问有答案吗？
+                                </div>
+                                <div class="comment-actions">
+                                    <button class="btn btn-sm btn-secondary" onclick="viewPost(2)">查看帖子</button>
+                                    <button class="btn btn-sm btn-danger" onclick="deleteComment(2)">删除</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 我的收藏 -->
+                    <div class="tab-content" id="favorites">
+                        <div class="content-header">
+                            <h2>我的收藏</h2>
+                        </div>
+                        <div class="favorites-list">
+                            <!-- 收藏项1 -->
+                            <div class="favorite-item">
+                                <div class="favorite-header">
+                                    <h3 class="favorite-title">校园周边租房攻略</h3>
+                                    <span class="favorite-time">收藏于 2天前</span>
+                                </div>
+                                <div class="favorite-preview">
+                                    详细介绍了学校周边的租房信息，包括价格、交通、环境等...
+                                </div>
+                                <div class="favorite-actions">
+                                    <button class="btn btn-sm btn-primary" onclick="viewPost(4)">查看</button>
+                                    <button class="btn btn-sm btn-danger" onclick="removeFavorite(1)">取消收藏</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 草稿箱 -->
+                    <div class="tab-content" id="drafts">
+                        <div class="content-header">
+                            <h2>草稿箱</h2>
+                        </div>
+                        <div class="drafts-list">
+                            <!-- 草稿项1 -->
+                            <div class="draft-item">
+                                <div class="draft-header">
+                                    <h3 class="draft-title">校园摄影作品分享</h3>
+                                    <span class="draft-time">保存于 昨天 15:30</span>
+                                </div>
+                                <div class="draft-preview">
+                                    整理了最近拍摄的校园风景照片，包括图书馆、操场、樱花大道...
+                                </div>
+                                <div class="draft-actions">
+                                    <button class="btn btn-sm btn-primary" onclick="continueEditing(1)">继续编辑</button>
+                                    <button class="btn btn-sm btn-danger" onclick="deleteDraft(1)">删除</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 粉丝关注 -->
+                    <div class="tab-content" id="followers">
+                        <div class="content-header">
+                            <h2>粉丝关注</h2>
+                            <div class="follow-tabs">
+                                <button class="follow-tab active" data-follow="followers">粉丝 (128)</button>
+                                <button class="follow-tab" data-follow="following">关注 (56)</button>
+                            </div>
+                        </div>
+                        <div class="followers-list">
+                            <!-- 粉丝项1 -->
+                            <div class="follower-item">
+                                <div class="follower-info">
+                                    <img src="https://via.placeholder.com/40x40" alt="粉丝头像" class="follower-avatar">
+                                    <div class="follower-details">
+                                        <h4 class="follower-name">学习小能手</h4>
+                                        <p class="follower-bio">热爱学习，乐于分享</p>
+                                    </div>
+                                </div>
+                                <div class="follower-actions">
+                                    <button class="btn btn-sm btn-secondary" onclick="sendMessage(1)">私信</button>
+                                    <button class="btn btn-sm btn-primary" onclick="followUser(1)">回关</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 校园贴吧系统. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园贴吧 - 首页</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1>校园贴吧</h1>
+            </div>
+            <div class="nav-search">
+                <input type="text" placeholder="搜索帖子、用户..." class="search-input">
+                <button class="search-btn">搜索</button>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link active">首页</a>
+                <a href="post-detail.html" class="nav-link">帖子</a>
+                <a href="create-post.html" class="nav-link">发帖</a>
+                <a href="profile.html" class="nav-link">我的</a>
+                <a href="login.html" class="nav-link">登录</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+        <div class="container">
+            <!-- 侧边栏 -->
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3>热门板块</h3>
+                    <ul class="category-list">
+                        <li><a href="#" class="category-link">校园新闻</a></li>
+                        <li><a href="#" class="category-link">学习交流</a></li>
+                        <li><a href="#" class="category-link">生活服务</a></li>
+                        <li><a href="#" class="category-link">二手交易</a></li>
+                        <li><a href="#" class="category-link">社团活动</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-section">
+                    <h3>在线用户</h3>
+                    <div class="online-users">
+                        <span class="user-count">128人在线</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- 帖子列表 -->
+            <section class="post-list">
+                <div class="post-header">
+                    <h2>最新帖子</h2>
+                    <button class="new-post-btn" onclick="location.href='create-post.html'">发新帖</button>
+                </div>
+                
+                <!-- 帖子项 -->
+                <article class="post-item">
+                    <div class="post-meta">
+                        <img src="images/avatar1.jpg" alt="用户头像" class="post-avatar">
+                        <div class="post-info">
+                            <span class="post-author">张三</span>
+                            <span class="post-time">2小时前</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="post-title">
+                            <a href="post-detail.html">校园文化艺术节即将开幕，欢迎大家踊跃参与！</a>
+                        </h3>
+                        <p class="post-excerpt">本次文化艺术节将包含音乐、舞蹈、戏剧等多种表演形式，还有丰富的互动环节...</p>
+                        <div class="post-tags">
+                            <span class="tag">校园新闻</span>
+                            <span class="tag">活动</span>
+                        </div>
+                    </div>
+                    <div class="post-stats">
+                        <span class="stat">👍 45</span>
+                        <span class="stat">💬 23</span>
+                        <span class="stat">👁️ 156</span>
+                    </div>
+                </article>
+
+                <article class="post-item">
+                    <div class="post-meta">
+                        <img src="images/avatar2.jpg" alt="用户头像" class="post-avatar">
+                        <div class="post-info">
+                            <span class="post-author">李四</span>
+                            <span class="post-time">5小时前</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="post-title">
+                            <a href="post-detail.html">高数期末复习资料分享</a>
+                        </h3>
+                        <p class="post-excerpt">整理了本学期高数的重点知识点和历年真题，需要的同学可以下载...</p>
+                        <div class="post-tags">
+                            <span class="tag">学习交流</span>
+                            <span class="tag">资料分享</span>
+                        </div>
+                    </div>
+                    <div class="post-stats">
+                        <span class="stat">👍 89</span>
+                        <span class="stat">💬 34</span>
+                        <span class="stat">👁️ 289</span>
+                    </div>
+                </article>
+
+                <article class="post-item">
+                    <div class="post-meta">
+                        <img src="images/avatar3.jpg" alt="用户头像" class="post-avatar">
+                        <div class="post-info">
+                            <span class="post-author">王五</span>
+                            <span class="post-time">1天前</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3 class="post-title">
+                            <a href="post-detail.html">求购二手笔记本电脑</a>
+                        </h3>
+                        <p class="post-excerpt">想买一台性能不错的二手笔记本，预算3000左右，有出的同学请联系我...</p>
+                        <div class="post-tags">
+                            <span class="tag">二手交易</span>
+                            <span class="tag">求购</span>
+                        </div>
+                    </div>
+                    <div class="post-stats">
+                        <span class="stat">👍 12</span>
+                        <span class="stat">💬 8</span>
+                        <span class="stat">👁️ 67</span>
+                    </div>
+                </article>
+            </section>
+        </div>
+    </main>
+
+    <!-- 浮动发帖按钮 -->
+    <button class="floating-btn" onclick="location.href='create-post.html'">
+        <span>+</span>
+    </button>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 校园贴吧系统. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
